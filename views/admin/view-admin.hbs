@@ -1,0 +1,54 @@
+<section>
+  {{!-- <div class="search m-4">
+
+    <form class="d-flex" role="search">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div> --}}
+
+  <div class="container mt-5">
+    <table id="table_id" class="table" >
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email_id</th>
+          <th scope="col">Age</th>
+          <th scope="col">Place</th>
+          <th scope="col">Option</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {{#each details}}
+          <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.age}}</td>
+            <td>{{this.place}}</td>
+            <td><a
+                href="admin/edit-user/{{this._id}}"
+                class="btn btn-primary"
+              >Edit</a>
+              <a
+                href="admin/delete-user/{{this._id}}"
+                class="btn btn-danger"
+                onclick=" return confirm('Are you sure want to delete {{this.name}}')"
+              >Delete</a></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+<script>
+$(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+
+</script>
